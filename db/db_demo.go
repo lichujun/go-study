@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gohouse/gorose/v2"
 )
 
@@ -19,8 +20,10 @@ func init() {
 func DB() gorose.IOrm {
 	return engin.NewOrm()
 }
-
 func main() {
+	// 这里定义一个变量db, 是为了复用db对象, 可以在最后使用 db.LastSql() 获取最后执行的sql
+	// 如果不复用 db, 而是直接使用 DB(), 则会新建一个orm对象, 每一次都是全新的对象
+	// 所以复用 db, 一定要在当前会话周期内
 	db := DB()
 	res, err := db.Query("select version()")
 	fmt.Println(res, err)

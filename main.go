@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-study/src/leetcode"
+	"go-study/leetcode"
 )
 
 func main() {
