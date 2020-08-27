@@ -1,0 +1,5 @@
+database:
+  type: mysql
+  mysqlConn: 'root:root@tcp(localhost:3306)/test'
+
+tableNameHandler: ["t_","tb_"]
