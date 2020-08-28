@@ -9,7 +9,7 @@ require (
 	github.com/emicklei/go-restful v2.14.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
-	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/golang/protobuf v1.4.2
 	github.com/jinzhu/gorm v1.9.16 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/lib/pq v1.8.0 // indirect
@@ -19,7 +19,11 @@ require (
 	github.com/spf13/afero v1.3.4 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/spf13/viper v1.7.1 // indirect
-	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
-	google.golang.org/protobuf v1.25.0 // indirect
+	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
+	golang.org/x/sys v0.0.0-20200828081204-131dc92a58d5 // indirect
+	google.golang.org/genproto v0.0.0-20200828030656-73b5761be4c5 // indirect
+	google.golang.org/grpc v1.33.0-dev
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v0.0.0-20200827205515-d25c71b54334 // indirect
+	google.golang.org/protobuf v1.25.0
 	gopkg.in/ini.v1 v1.60.1 // indirect
 )
