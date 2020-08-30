@@ -1,6 +1,6 @@
 package controller
 
-import "github.com/emicklei/go-restful"
+import "github.com/emicklei/go-restful/v3"
 
 var services []*restful.WebService
 

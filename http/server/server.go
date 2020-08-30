@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful/v3"
 	"go-study/http/server/controller"
 	"log"
 	"net/http"

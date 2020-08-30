@@ -7,6 +7,7 @@ require github.com/gohouse/gorose/v2 v2.1.8
 require (
 	github.com/akkagao/table2go v0.0.0-20191205031357-5103fbb03fce // indirect
 	github.com/emicklei/go-restful v2.14.0+incompatible
+	github.com/emicklei/go-restful/v3 v3.3.0
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/golang/protobuf v1.4.2

@@ -2,7 +2,7 @@ package controller
 
 import (
 	"fmt"
-	"github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful/v3"
 )
 
 func init() {
