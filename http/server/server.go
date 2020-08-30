@@ -1,29 +1,26 @@
 package main
 
 import (
-	"fmt"
 	"github.com/emicklei/go-restful"
+	"go-study/http/server/controller"
 	"log"
 	"net/http"
 	"time"
 )
 
-func helloWorld(request *restful.Request, response *restful.Response) {
-	fmt.Fprintf(response, "hello world")
-}
-
 func main() {
-	// container 同样实现了http.Hadler接口
+	// container 同样实现了http.Hadler接口t
 	container := restful.NewContainer()
-	webService := new(restful.WebService)
-	webService.Route(webService.GET("/hello").To(helloWorld))
-	container.Add(webService)
+	services := controller.GetAllService()
+	for _, service := range services {
+		container.Add(service)
+	}
 	server := &http.Server{
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
 		IdleTimeout:  120 * time.Second,
 		Handler:      container,
-		Addr:         ":8080",
+		Addr:         ":9000",
 	}
 	log.Fatal(server.ListenAndServe())
 	/*http.HandleFunc("/", helloWorld)
