@@ -2,8 +2,10 @@ package demo
 
 import (
 	"fmt"
+	"github.com/panjf2000/ants/v2"
 	"reflect"
 	"sync"
+	"sync/atomic"
 	"testing"
 	"time"
 )
@@ -103,4 +105,24 @@ func consume(queue chan int, size int) {
 			}
 		}()
 	}
+}
+
+func TestGoroutinePool(t *testing.T) {
+	defer ants.Release()
+	var sum int32 = 0
+	for i := 0; i < 1000; i++ {
+		_ = ants.Submit(func() {
+			atomic.AddInt32(&sum, 1)
+		})
+	}
+
+	p, _ := ants.NewPool(100)
+	defer p.Release()
+	for i := 0; i < 1000; i++ {
+		_ = p.Submit(func() {
+			atomic.AddInt32(&sum, 1)
+		})
+	}
+	time.Sleep(time.Second)
+	fmt.Println(sum)
 }
