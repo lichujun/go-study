@@ -5,6 +5,7 @@ import (
 	"reflect"
 	"sync"
 	"testing"
+	"time"
 )
 
 type Person struct {
@@ -69,4 +70,37 @@ func TestGetOne(t *testing.T) {
 	GetOne()
 	GetOne()
 	GetOne()
+}
+
+func TestGoroutine(t *testing.T) {
+	size := 10
+	queue := make(chan int, 2*size)
+
+	produce(queue, size)
+	consume(queue, size)
+
+	select {}
+}
+
+func produce(queue chan int, size int) {
+	for i := 0; i < size; i++ {
+		go func(data int) {
+			for {
+				fmt.Println("produce:", data)
+				queue <- data
+			}
+		}(i)
+	}
+}
+
+func consume(queue chan int, size int) {
+	for i := 0; i < size; i++ {
+		go func() {
+			for {
+				data := <-queue
+				fmt.Println("consume:", data)
+				time.Sleep(time.Second * 2)
+			}
+		}()
+	}
 }
