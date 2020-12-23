@@ -26,9 +26,17 @@ func TestGetRandom(t *testing.T) {
 		},
 	}
 	c := 0
-	for i := 0; i < 5_000_000; i++ {
+	/*for i := 0; i < 5_000_000; i++ {
 		if GetRandom(listNode) == 5 {
 			c++
+		}
+	}
+	fmt.Println(c)*/
+	for i := 0; i < 5_000_000; i++ {
+		for _, m := range GetKRandom(listNode, 3) {
+			if m == 5 {
+				c++
+			}
 		}
 	}
 	fmt.Println(c)
@@ -43,6 +51,24 @@ func GetRandom(node *ListNode) int {
 		i++
 		if rand.Intn(i) == 0 {
 			res = node.Val
+		}
+		node = node.Next
+	}
+	return res
+}
+
+func GetKRandom(node *ListNode, k int) []int {
+	res := make([]int, k)
+	i := 0
+	for ; node != nil && i < k; i++ {
+		res[i] = node.Val
+		node = node.Next
+	}
+	for node != nil {
+		i++
+		j := rand.Intn(i)
+		if j < k {
+			res[j] = node.Val
 		}
 		node = node.Next
 	}
