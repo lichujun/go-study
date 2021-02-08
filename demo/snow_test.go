@@ -75,7 +75,7 @@ func (worker *SnowWorker) NextId() (int64, error) {
 		worker.sequence = 0
 	}
 	worker.timestamp = currentTimeStamp
-	return (worker.timestamp << timestampBitLeft) | (worker.dataCenterId << dataCenterIdBitLeft) |
+	return ((worker.timestamp - startTimestamp) << timestampBitLeft) | (worker.dataCenterId << dataCenterIdBitLeft) |
 		(worker.machineId << machineIdBitLeft) | worker.sequence, nil
 }
 
